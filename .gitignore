@@ -1,0 +1,111 @@
+# ==========================
+# Python
+# ==========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Virtual Environment
+.venv/
+venv/
+env/
+ENV/
+
+# ==========================
+# uv
+# ==========================
+
+# Keep the lock file for reproducible builds
+# DO NOT ignore uv.lock
+
+# ==========================
+# Environment Variables
+# ==========================
+.env
+.env.*
+!.env.example
+
+# ==========================
+# Streamlit
+# ==========================
+
+# Local Streamlit secrets
+.streamlit/secrets.toml
+
+# Optional local config
+.streamlit/config.toml
+
+# ==========================
+# IDE
+# ==========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==========================
+# OS Files
+# ==========================
+.DS_Store
+Thumbs.db
+
+# ==========================
+# Testing
+# ==========================
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================
+# Jupyter
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# Build
+# ==========================
+build/
+dist/
+*.egg-info/
+
+# ==========================
+# Logs
+# ==========================
+logs/
+*.log
+
+# ==========================
+# LangChain
+# ==========================
+
+# LangSmith traces (if exported locally)
+.langsmith/
+
+# Cached outputs
+cache/
+
+# Vector databases
+chroma_db/
+vectorstore/
+faiss_index/
+
+# LLM cache
+.llm_cache/
+
+# ==========================
+# Generated Stories
+# ==========================
+stories/
+generated/
+outputs/
+
+# ==========================
+# Temporary Files
+# ==========================
+tmp/
+temp/
