@@ -7,8 +7,14 @@ st.set_page_config(
     layout="centered"
 )
 
-st.title("📖 AI Story Generator")
-st.caption("Create imaginative stories instantly using Gemini 2.5 Flash")
+st.markdown(
+    "<h1 style='text-align: center;'>📖 AI Story Generator</h1>",
+    unsafe_allow_html=True
+)
+st.markdown(
+    "<h5 style='text-align: center;'>Create imaginative stories instantly using Gemini 2.5 Flash</h5>",
+    unsafe_allow_html=True
+)
 
 topic = st.text_input(
     "Enter a story topic",
@@ -35,7 +41,10 @@ if generate:
     with st.spinner("Creating your story..."):
         story = tell_story(topic, length)
 
-        st.subheader("📚 Your Story")
+        st.markdown(
+            "<h3 style='text-align: center;'>📚 Your Story</h3>",
+            unsafe_allow_html=True
+        )
 
         st.markdown(story)
         col1, col2 = st.columns(2)
