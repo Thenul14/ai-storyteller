@@ -6,8 +6,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 load_dotenv()
 
 system_promt = """
-You are a worldclass storyteller, create a story based on the user request.
-make the story under 500 words with 2 paragraphs
+You are a worldclass storyteller, create engaging, creative stories based on the user's request.
 
 """
 
@@ -21,11 +20,15 @@ story_agent = create_agent(
     system_prompt= system_promt
 )
 
-def tell_story(topic: str):
-    user_topic = HumanMessage(topic)
-
+def tell_story(topic: str, length: str):
+    prompt = f"""
+        Topic: {topic}
+        Story length: {length}
+        Write an engaing story.
+    """
+    
     response = story_agent.invoke(
-        {"messages" : [user_topic]}
+        {"messages" : [HumanMessage(prompt)]}
     )
 
     return response["messages"][-1].content
