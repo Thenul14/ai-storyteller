@@ -39,8 +39,8 @@ if generate:
         st.stop()
 
     with st.spinner("Creating your story..."):
-        story = tell_story(topic, length)
-
+        story,title = tell_story(topic, length)
+        st.markdown(title)
         st.markdown(
             "<h3 style='text-align: center;'>📚 Your Story</h3>",
             unsafe_allow_html=True
