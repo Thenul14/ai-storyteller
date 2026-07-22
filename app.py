@@ -39,20 +39,27 @@ if generate:
         st.stop()
 
     with st.spinner("Creating your story..."):
-        story,title = tell_story(topic, length)
-        st.markdown(title)
+        result = tell_story(topic, length)
+
         st.markdown(
-            "<h3 style='text-align: center;'>📚 Your Story</h3>",
+            "<h3 style='text-align: center; text-decoration: underline;'>📚 Your Story</h3>",
             unsafe_allow_html=True
         )
 
-        st.markdown(story)
+        st.markdown(
+            f"<h2 style='text-align: center;'>{result['title']}</h2>",
+            unsafe_allow_html=True
+        )
+
+        
+        st.write(result["story"])
+
         col1, col2 = st.columns(2)
 
         with col1:
             st.download_button(
                 "⬇ Download Story",
-                story,
+                result["story"],
                 file_name="story.txt"
             )
 

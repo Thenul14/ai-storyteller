@@ -9,6 +9,9 @@ load_dotenv()
 system_promt = """
 You are a worldclass storyteller, create engaging, creative stories based on the user's request.
 
+Always call the generate_title tool first.
+Then write the story.
+Do not include the title in the AIMessage
 """
 model = ChatGoogleGenerativeAI(
     model="gemini-2.5-flash",
@@ -49,4 +52,7 @@ def tell_story(topic: str, length: str):
             title = message.content
             break
 
-    return response["messages"][-1].content, title
+    return {
+        "title" : title,
+        "story" : response["messages"][-1].content
+    }
