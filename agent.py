@@ -35,10 +35,11 @@ story_agent = create_agent(
     system_prompt= system_promt
 )
 
-def tell_story(topic: str, length: str):
+def tell_story(topic: str, length: str, genre: str):
     prompt = f"""
         Topic: {topic}
         Story length: {length}
+        Story gener: {genre}
         Write an engaing story.
     """
 

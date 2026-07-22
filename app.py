@@ -27,6 +27,35 @@ length = st.select_slider(
         value="Medium"
     )
 
+genres = [
+    "Fantasy",
+    "Adventure",
+    "Science Fiction",
+    "Mystery",
+    "Horror",
+    "Romance",
+    "Comedy",
+    "Thriller",
+    "Historical",
+    "Drama",
+    "Fairy Tale",
+    "Cyberpunk",
+    "Steampunk",
+    "Superhero",
+    "Post-Apocalyptic",
+    "Western",
+    "Crime",
+    "Mythology",
+    "Detective",
+    "Slice of Life",
+]
+
+genre = st.selectbox(
+    "Select a Genre",
+    genres,
+    index=0
+)
+
 generate = st.button(
     "✨ Generate Story",
     use_container_width=True
@@ -39,7 +68,7 @@ if generate:
         st.stop()
 
     with st.spinner("Creating your story..."):
-        result = tell_story(topic, length)
+        result = tell_story(topic, length, genre)
 
         st.markdown(
             "<h3 style='text-align: center; text-decoration: underline;'>📚 Your Story</h3>",
