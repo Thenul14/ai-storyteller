@@ -35,11 +35,24 @@ story_agent = create_agent(
     system_prompt= system_promt
 )
 
+def extract_text(content):
+    if isinstance(content, str):
+        return content
+
+    if isinstance(content, list):
+        return "".join(
+            block.get("text", "")
+            for block in content
+            if isinstance(block, dict)
+        )
+
+    return str(content)
+
 def tell_story(topic: str, length: str, genre: str):
     prompt = f"""
         Topic: {topic}
         Story length: {length}
-        Story gener: {genre}
+        Genre: {genre}
         Write an engaing story.
     """
 
@@ -48,12 +61,16 @@ def tell_story(topic: str, length: str, genre: str):
     )
 
     title = ""
+    
     for message in response["messages"]:
         if isinstance(message, ToolMessage):
-            title = message.content
+            title = extract_text(message.content)
             break
+    
+    story = extract_text(response["messages"][-1].content)
 
+    
     return {
         "title" : title,
-        "story" : response["messages"][-1].content
+        "story" : story
     }
